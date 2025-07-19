@@ -4,6 +4,7 @@ const config = {
   port: process.env.PORT || 3000,
   nodeEnv: process.env.NODE_ENV || 'development',
   databaseUrl: process.env.DATABASE_URL,
+  frontendUrl: process.env.FRONTEND_URL || '*',
 };
 
 // Validate required environment variables
