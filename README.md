@@ -102,6 +102,7 @@ Create a `.env.local` file with your database credentials:
 DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
 NODE_ENV="development"
 PORT=3000
+FRONTEND_URL="http://localhost:3000"  # Optional: specify frontend URL for CORS
 ```
 
 This file is ignored by git to keep your credentials secure.
