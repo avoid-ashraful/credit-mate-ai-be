@@ -25,7 +25,65 @@ async function main() {
     }),
   ]);
 
+  // Create sample banks
+  const banks = await Promise.all([
+    prisma.bank.upsert({
+      where: { id: 1 },
+      update: {},
+      create: {
+        name: 'Chase Bank',
+        website: 'https://www.chase.com',
+      },
+    }),
+    prisma.bank.upsert({
+      where: { id: 2 },
+      update: {},
+      create: {
+        name: 'Bank of America',
+        website: 'https://www.bankofamerica.com',
+      },
+    }),
+    prisma.bank.upsert({
+      where: { id: 3 },
+      update: {},
+      create: {
+        name: 'Wells Fargo',
+        website: 'https://www.wellsfargo.com',
+      },
+    }),
+  ]);
+
+  // Create sample credit cards
+  const creditCards = await Promise.all([
+    prisma.creditCard.upsert({
+      where: { id: 1 },
+      update: {},
+      create: {
+        name: 'Chase Sapphire Preferred',
+        bankId: 1,
+      },
+    }),
+    prisma.creditCard.upsert({
+      where: { id: 2 },
+      update: {},
+      create: {
+        name: 'Chase Freedom Unlimited',
+        bankId: 1,
+      },
+    }),
+    prisma.creditCard.upsert({
+      where: { id: 3 },
+      update: {},
+      create: {
+        name: 'Bank of America Cash Rewards',
+        bankId: 2,
+      },
+    }),
+  ]);
+
   console.log('Created users:', users);
+  console.log('Created banks:', banks);
+  console.log('Created credit cards:', creditCards);
 }
 
 main()

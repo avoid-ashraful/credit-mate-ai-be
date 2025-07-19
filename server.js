@@ -4,6 +4,10 @@ require('./src/config/env');
 const express = require('express');
 const prisma = require('./src/config/database');
 
+// Import routes
+const banksRouter = require('./src/routes/banks');
+const creditCardsRouter = require('./src/routes/creditCards');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -37,6 +41,10 @@ app.get('/', (req, res) => {
 app.get('/hello', (req, res) => {
   res.json({ message: 'Hello from /hello endpoint!' });
 });
+
+// API routes
+app.use('/api/banks', banksRouter);
+app.use('/api/credit-cards', creditCardsRouter);
 
 // Example API route using Prisma
 app.get('/users', async (req, res) => {
