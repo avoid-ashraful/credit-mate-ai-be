@@ -10,7 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Example User model - you can modify this as needed
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -19,4 +18,24 @@ model User {
   updatedAt DateTime @updatedAt
 
   @@map("users")
+}
+
+model Bank {
+  id          Int          @id @default(autoincrement())
+  name        String
+  website     String?
+  createdAt   DateTime     @default(now())
+  creditCards CreditCard[]
+
+  @@map("banks")
+}
+
+model CreditCard {
+  id        Int      @id @default(autoincrement())
+  name      String
+  bankId    Int
+  bank      Bank     @relation(fields: [bankId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@map("credit_cards")
 }

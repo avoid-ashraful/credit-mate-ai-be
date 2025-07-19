@@ -1,16 +1,16 @@
 {
   "name": "express-backend",
   "version": "1.0.0",
-  "description": "Express.js backend with hello world endpoint",
+  "description": "Express.js backend with Prisma ORM, Bank and Credit Card CRUD APIs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "db:seed": "node prisma/seed.js"
+    "db:generate": "dotenv -e .env.local -- prisma generate",
+    "db:push": "dotenv -e .env.local -- prisma db push",
+    "db:migrate": "dotenv -e .env.local -- prisma migrate dev",
+    "db:studio": "dotenv -e .env.local -- prisma studio",
+    "db:seed": "dotenv -e .env.local -- node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.12.0",
@@ -18,6 +18,7 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "dotenv-cli": "^7.3.0",
     "nodemon": "^3.0.1",
     "prisma": "^6.12.0"
   },
